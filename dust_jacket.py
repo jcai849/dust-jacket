@@ -24,16 +24,10 @@ class Point:
     """
     abscissa: float
     ordinate: float
-    _index: float = 2
 
     def __iter__(self):
-        return self
-
-    def __next__(self):
-        if self._index == 0:
-            raise StopIteration
-        self._index -= 1
-        return (self.ordinate, self.abscissa)[self._index]
+        yield self.abscissa
+        yield self.ordinate
 
 @dataclass(init=False)
 class Canvas:
